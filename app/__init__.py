@@ -35,5 +35,11 @@ app.config['GITHUB_CLIENT_ID'] = config.GITHUB_CLIENT_ID
 app.config['GITHUB_CLIENT_SECRET'] = config.GITHUB_CLIENT_SECRET
 github = GitHub(app)
 
+
+# flask socketio
+from flask_socketio import SocketIO
+socketio = SocketIO(app)
+
+
 # import views
 from app import views

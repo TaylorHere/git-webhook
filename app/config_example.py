@@ -16,3 +16,7 @@ CELERY_RESULT_BACKEND = 'redis://:redis_pwd@127.0.0.1:6379/0'
 
 GITHUB_CLIENT_ID = 'b6e751cc48d664240467'
 GITHUB_CLIENT_SECRET = '6a9e0cbeee1bf89a1e1a25958f35b9dc6b36c996'
+
+
+# base url = the base url in your browser.
+BASE_URL = 'http://webhook.hust.cc'

@@ -1,6 +1,23 @@
 import React from 'react';
+import SocketMixin from '../mixins/socketMixin.jsx';
+import OnFireMixin from '../mixins/onFireMixin.jsx';
 
 const Footer = React.createClass({
+  mixins: [SocketMixin, OnFireMixin],  // 引入 mixin
+  receiveMessage: function(message) {
+    try { 
+      message = JSON.parse(message);
+      if (message.type && message.data) {
+        //webhook_status / new_history / history_status
+        console.log('fire event:', message.type, message.data);
+
+        this.fire(message.type, message.data);
+      }
+    } catch (e) {}
+  },
+  componentDidMount: function() {
+    this.readSocket('ws', this.receiveMessage);
+  },
   render: function() {
     return (
       <div className="ui inverted vertical footer segment">
